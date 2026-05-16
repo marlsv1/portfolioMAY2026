@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1920 1080">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2 {
+        font-weight: 500;
+      }
+
+      .st0, .st2 {
+        font-family: DMMono-Medium, 'DM Mono';
+      }
+
+      .st0, .st2, .st3 {
+        font-size: 18.88px;
+      }
+
+      .st0, .st3 {
+        fill: #afafaf;
+      }
+
+      .st4 {
+        fill: #5b5a5a;
+        font-family: HelveticaNeue, 'Helvetica Neue';
+        font-size: 25.18px;
+      }
+
+      .st5 {
+        font-family: DMMono-Regular, 'DM Mono';
+        font-size: 37.77px;
+      }
+
+      .st1 {
+        font-family: HelveticaNeue-Medium, 'Helvetica Neue';
+        font-size: 31.47px;
+      }
+
+      .st3 {
+        font-family: SpaceMono-Regular, 'Space Mono';
+      }
+
+      .st6 {
+        display: none;
+      }
+
+      .st7 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" class="st6">
+    <g>
+      <polyline class="st7" points="801.82 530.39 801.82 661.24 838.73 661.24"/>
+      <polyline class="st7" points="838.73 466.11 801.82 466.11 801.82 382.21 801.82 321.39"/>
+      <text transform="translate(853.66 462.41)"><tspan class="st2"><tspan x="0" y="0">10/2024 - Present</tspan></tspan><tspan class="st1"><tspan x="0" y="37.77">Hochschule Osnabrück</tspan></tspan><tspan class="st4"><tspan x="0" y="67.98">Media and Interaction Design</tspan></tspan></text>
+      <text transform="translate(853.66 661.24)"><tspan class="st0"><tspan x="0" y="0">2014 - 2023</tspan></tspan><tspan class="st1"><tspan x="0" y="37.77">Gymnasium Harsewinkel</tspan></tspan><tspan class="st4"><tspan x="0" y="67.98">Allgemeine Hochschulreife</tspan></tspan></text>
+      <text class="st5" transform="translate(791.84 303.63)"><tspan x="0" y="0">Education</tspan></text>
+      <polygon points="769.17 303.63 783.66 278.54 754.69 278.54 769.17 303.63"/>
+      <line class="st7" x1="801.82" y1="466.11" x2="801.82" y2="603.47"/>
+    </g>
+  </g>
+  <g id="Layer_2">
+    <g>
+      <polyline class="st7" points="767.06 433.63 767.06 564.48 803.97 564.48"/>
+      <polyline class="st7" points="803.97 369.35 767.06 369.35 767.06 285.45 767.06 224.63"/>
+      <text transform="translate(818.9 365.65)"><tspan class="st2"><tspan x="0" y="0">08/2024 - Present</tspan></tspan><tspan class="st1"><tspan x="0" y="37.77">MUUUH! Group</tspan></tspan><tspan class="st4"><tspan x="0" y="67.98">Community Manager</tspan></tspan></text>
+      <text transform="translate(818.9 564.48)"><tspan class="st0"><tspan x="0" y="0">05/2024 - 08/2024</tspan></tspan><tspan class="st1"><tspan x="0" y="37.77">WÖRK.APP</tspan></tspan><tspan class="st4"><tspan x="0" y="67.98">Social Media Manager - Intern</tspan></tspan></text>
+      <text transform="translate(818.9 759.62)"><tspan class="st3"><tspan x="0" y="0">04/2023 - 10/2023 </tspan></tspan><tspan class="st1"><tspan x="0" y="37.77">Hotel-Residenz Klosterpforte</tspan></tspan><tspan class="st4"><tspan x="0" y="67.98">Waiter</tspan></tspan></text>
+      <text class="st5" transform="translate(757.08 206.88)"><tspan x="0" y="0">Experience</tspan></text>
+      <polygon points="734.41 206.88 748.9 181.79 719.92 181.79 734.41 206.88"/>
+      <line class="st7" x1="767.06" y1="369.35" x2="767.06" y2="506.72"/>
+      <polyline class="st7" points="767.06 628.76 767.06 759.62 803.97 759.62"/>
+      <line class="st7" x1="767.06" y1="564.48" x2="767.06" y2="701.85"/>
+    </g>
+  </g>
+</svg>

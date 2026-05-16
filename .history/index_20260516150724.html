@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marlon Lutete</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header id="site-header">
+    <div class="header-left">
+      <span class="logo">m<sup>*</sup></span>
+    </div>
+    <nav class="breadcrumb" id="breadcrumb">
+      <button class="tab active" data-view="home">home</button>
+    </nav>
+    <div class="header-right">
+      <span class="clock" id="clock"></span>
+    </div>
+  </header>
+
+  <main id="main-grid">
+
+    <section class="col col-left">
+      <div class="greeting">
+        <p><span id="greeting-word" class="typewriter-cursor">Hi!</span></p>
+        <p>I'm Marlon</p>
+      </div>
+
+      <div class="eye-wrapper" id="eye-wrapper" aria-hidden="true">
+        <div class="eye-container">
+          <img src="assets/eye_border.svg" class="eye-border" alt="" />
+          <img src="assets/eye_pupil.svg" class="eye-pupil" id="eye-pupil" alt="" />
+        </div>
+      </div>
+
+      <ul class="skill-list">
+        <li>ux / ui</li>
+        <li>video editing</li>
+        <li>3d</li>
+        <li>graphic design</li>
+      </ul>
+    </section>
+
+    <section class="col col-mid">
+      <div class="folders-wrap">
+        <button class="folder-btn" data-view="projects" aria-label="Open Projects">
+          <span class="folder-icon-wrap">
+            <img src="assets/folder_closed2.svg" class="folder-img folder-closed" alt="folder closed" />
+            <img src="assets/folder_opened2.svg" class="folder-img folder-opened" alt="folder open" />
+          </span>
+          <span class="folder-label">projects</span>
+        </button>
+
+        <button class="folder-btn" data-view="about" aria-label="Open About Me">
+          <span class="folder-icon-wrap">
+            <img src="assets/folder_closed2.svg" class="folder-img folder-closed" alt="folder closed" />
+            <img src="assets/folder_opened2.svg" class="folder-img folder-opened" alt="folder open" />
+          </span>
+          <span class="folder-label">about me</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="col col-right">
+      <div class="profile-photo-frame">
+        <img src="assets/photo1.jpeg" alt="Marlon Lutete" class="profile-photo" />
+      </div>
+      <div class="profile-info">
+        <p>media and interaction</p>
+        <p>design student</p>
+        <p class="muted">based in germany</p>
+        <a href="mailto:marlon.lutete@gmail.com" class="email-link">marlon.lutete@gmail.com</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="panel" id="panel-projects" role="dialog" aria-modal="true" aria-label="Projects">
+    <div class="panel-header">
+      <span class="panel-title">projects</span>
+      <button class="panel-close" data-close="projects" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-body">
+      <div class="project-grid">
+        <button class="project-item" data-project="project1">
+          <span class="project-name">ReDate: Zap</span>
+          <span class="project-sub">ux / ui</span>
+        </button>
+        <button class="project-item" data-project="project3">
+          <span class="project-name">memories</span>
+          <span class="project-sub">animation</span>
+        </button>
+        <button class="project-item" data-project="project2">
+          <span class="project-name">HotDawgs</span>
+          <span class="project-sub">3d / unity</span>
+        </button>
+        
+        <!-- <button class="project-item" data-project="project4">
+          <span class="project-name">utopia</span>
+          <span class="project-sub">graphic design</span>
+        </button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-project" id="panel-project-detail" role="dialog" aria-modal="true" aria-label="Project Detail">
+    <div class="panel-header">
+      <span class="panel-title" id="project-detail-title">project</span>
+      <button class="panel-close" data-close="project-detail" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-body">
+
+      <!-- ═══════════════════════════════════════
+           MEMORIES
+      ════════════════════════════════════════ -->
+      <div class="project-content" id="content-project3">
+        <div class="pd-wrap">
+
+          <div class="pd-header">
+            <div class="pd-title-group">
+              <h1 class="pd-title">memories</h1>
+              <span class="pd-year">2026</span>
+            </div>
+            <div class="pd-tags">
+              <span class="meta-tag">3d animation</span>
+              <span class="meta-tag">short film</span>
+              <span class="meta-tag">solo project</span>
+              <span class="meta-tag">Blender</span>
+              <span class="meta-tag">After Effects</span>
+              <span class="meta-tag">DaVinci Resolve</span>
+            </div>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Overview</span>
+            <p class="pd-text">memories is a short 3D film about nostalgia — not the cozy, harmless kind, but the type that makes you idealize the past a little too much. I wanted to explore why looking back can feel so good even when it kind of messes with your head. Everything from concept to color grade was done by me, solo.</p>
+          </div>
+
+          <div class="pd-media-block">
+            <span class="pd-label">Film</span>
+            <div class="pd-video-wrap">
+              <video controls playsinline preload="metadata">
+                <source src="assets/memories.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="pd-caption">memories, 2026 — 3D animation short film <br /><a href="https://www.youtube.com/watch?v=xzEFtl21Yr8" target="_blank">Watch on YouTube</a></p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Challenges</span>
+            <div class="pd-challenges">
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">Making "dangerous nostalgia" actually look like something</span>
+                <p class="pd-text">The tricky part was showing a feeling without just slapping text on screen. I went with environments that look warm and familiar at first — but the longer you look, the more something feels slightly off. Scale, light, depth — all subtly wrong. Uncomfortable under the surface.</p>
+              </div>
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">Blender → After Effects pipeline</span>
+                <p class="pd-text">I exported separate render passes (diffuse, shadow, depth, emission) as EXR files so I could composite non-destructively in AE. That way I could tweak the atmosphere, glow and depth of field without touching the 3D scenes again.</p>
+              </div>
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">The voice</span>
+                <p class="pd-text">I recorded the narration myself, then used AI to transform it into a female voice. It wasn't a shortcut — it was a decision. Nostalgia is always someone else's reconstruction of a memory. Having a different voice tell the story felt right.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pd-media-block">
+            <span class="pd-label">Behind the Scenes</span>
+            <div class="pd-screenshot-wrap">
+              <img src="assets/After_Effects_Timeline.png" alt="After Effects Timeline" class="pd-screenshot" />
+            </div>
+            <p class="pd-caption">After Effects timeline — 80+ layers across audio, VFX, color and camera overlays.</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">What I did</span>
+            <ul class="pd-role-list">
+              <li>Concept & narrative structure</li>
+              <li>Storyboarding & animatic</li>
+              <li>3D modeling, shading & lighting in Blender</li>
+              <li>Character & environment animation</li>
+              <li>Voiceover recording & AI voice processing</li>
+              <li>Multi-pass compositing in After Effects</li>
+              <li>Color grading in DaVinci Resolve</li>
+              <li>Sound design & audio mix</li>
+            </ul>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">What I learned</span>
+            <p class="pd-text">Less is more — genuinely. Early cuts of this film explained everything. Once I stopped over-explaining and trusted the visuals to carry the meaning, it actually became what I wanted it to be. Also: having a solid render pipeline matters more than you think when you're working solo and don't want to re-render 8-hour scenes.</p>
+          </div>
+
+          <div class="pd-footer">
+            <button class="back-to-top">↑ back to top</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           ZAP (ReDate)
+      ════════════════════════════════════════ -->
+      <div class="project-content" id="content-project1">
+        <div class="pd-wrap">
+
+          <div class="pd-header">
+            <div class="pd-title-group">
+              <h1 class="pd-title">Zap</h1>
+              <span class="pd-year">2026</span>
+            </div>
+            <div class="pd-tags">
+              <span class="meta-tag">ux / ui</span>
+              <span class="meta-tag">app design</span>
+              <span class="meta-tag">duo project</span>
+              <span class="meta-tag">Figma</span>
+            </div>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">The Idea</span>
+            <p class="pd-text">Zap is a dating app that uses clothing style as an icebreaker. Instead of swiping on faces, you swipe on outfits — and match with people who share your aesthetic. ReBuy integration makes the whole thing circular: you can buy the pieces you see directly in the app, keeping sustainability in the loop.</p>
+            <p class="pd-text" style="margin-top: 12px;">Style is identity. If you can see what someone wears, you already know more about them than any "what's your vibe?" prompt could ever tell you.</p>
+          </div>
+
+          <div class="pd-media-block">
+            <span class="pd-label">App Demo</span>
+            <div class="pd-video-wrap pd-video-portrait">
+              <video controls playsinline preload="metadata">
+                <source src="assets/zap.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p class="pd-caption">Prototype walkthrough — iPhone mockup, recorded in Jitter</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Why it makes sense</span>
+            <p class="pd-text">Clothes communicate identity before you even open your mouth. Matching someone based on aesthetic gives you an immediate, genuine conversation starter — something way more useful than "hey, how's it going?" And combining dating with second-hand shopping wasn't just a gimmick: it ties into how people actually discover fashion online.</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Research — Checking the Giants</span>
+            <p class="pd-text">We looked at Tinder, Vinted and Bumble to figure out what actually annoys people. One thing came up a lot in interviews: pressure. Classic dating apps put you on the spot immediately. Liking someone's face is high-stakes. Liking their jacket? Much lower barrier to entry.</p>
+          </div>
+
+          <div class="pd-media-block">
+            <span class="pd-label">User Journey — The Fearful User</span>
+            <div class="pd-screenshot-wrap">
+              <img src="assets/User Journey.png" alt="User Journey Map" class="pd-screenshot" />
+            </div>
+            <p class="pd-caption">Strategy: lower the stakes. Engaging with an outfit feels less "exposed" than engaging with a person directly.</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">UX Strategy</span>
+            <p class="pd-text">Two main levers: reduce social friction (style-first matching via algorithm, no face-first pressure) and reward circular behavior (shopping second-hand earns you visibility boosts in the feed). The goal was an app that feels playful, not performative.</p>
+          </div>
+
+          <div class="pd-media-block">
+            <span class="pd-label">Process — The Flow</span>
+            <div class="pd-screenshot-wrap">
+              <img src="assets/Flowchart.png" alt="App Flowchart" class="pd-screenshot" />
+            </div>
+            <p class="pd-caption">Onboarding flow mapped in Lucidchart — kept it lean, but used it to collect style preferences without feeling like a form.</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Interface</span>
+            <p class="pd-text" style="margin-bottom: 24px;">Three core screens, each solving a specific problem:</p>
+            <div class="pd-carousel">
+              <div class="pd-slides">
+                <div class="pd-slide active">
+                  <img src="assets/zap profile.png" alt="Zap — Profile Screen" class="pd-slide-img" />
+                  <div class="pd-slide-caption">
+                    <span class="pd-slide-label">Profiles</span>
+                    <p class="pd-text">Style over bio. Your outfits do the talking — a curated feed of looks instead of a static photo + "I like hiking" blurb.</p>
+                  </div>
+                </div>
+                <div class="pd-slide">
+                  <img src="assets/zap chats.png" alt="Zap — Chats Screen" class="pd-slide-img" />
+                  <div class="pd-slide-caption">
+                    <span class="pd-slide-label">Chats</span>
+                    <p class="pd-text">Conversations start with the outfit. "Where's that jacket from?" is a way better opener than a blank message box.</p>
+                  </div>
+                </div>
+                <div class="pd-slide">
+                  <img src="assets/zap shop.png" alt="Zap — Shop Screen" class="pd-slide-img" />
+                  <div class="pd-slide-caption">
+                    <span class="pd-slide-label">Shopping</span>
+                    <p class="pd-text">ReBuy lives inside the social feed. Scroll matches, buy the look. Sustainable by default, not as an afterthought.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pd-carousel-controls">
+                <button class="pd-prev" aria-label="Previous">←</button>
+                <div class="pd-dots">
+                  <button class="pd-dot active" aria-label="Slide 1"></button>
+                  <button class="pd-dot" aria-label="Slide 2"></button>
+                  <button class="pd-dot" aria-label="Slide 3"></button>
+                </div>
+                <button class="pd-next" aria-label="Next">→</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Team</span>
+            <p class="pd-text">Duo project. Working with another designer meant every decision got challenged — and that's a good thing. You can't get away with "it just looks right" when someone else is sitting next to you asking why. The result is cleaner than anything I would have built alone.</p>
+          </div>
+
+          <div class="pd-footer">
+            <button class="back-to-top">↑ back to top</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           HOTDAWGS
+      ════════════════════════════════════════ -->
+      <div class="project-content" id="content-project2">
+        <div class="pd-wrap">
+
+          <div class="pd-header">
+            <div class="pd-title-group">
+              <h1 class="pd-title">HotDawgs</h1>
+              <span class="pd-year">2024</span>
+            </div>
+            <div class="pd-tags">
+              <span class="meta-tag">3d game</span>
+              <span class="meta-tag">simulation</span>
+              <span class="meta-tag">duo project</span>
+              <span class="meta-tag">Unity</span>
+              <span class="meta-tag">C#</span>
+            </div>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Overview</span>
+            <p class="pd-text">HotDawgs is a 3D hot dog stand simulator built in Unity. You take orders, prep the food and serve customers before they lose patience — or before you give them the wrong thing. Simple premise, surprisingly stressful. The kind of game that's easy to pick up but hard to stay cool in when three customers show up at once.</p>
+          </div>
+
+          <!-- Gameplay video placeholder -->
+          <div class="pd-media-block">
+            <span class="pd-label">Gameplay</span>
+            <div class="pd-placeholder-media">
+              <span class="pd-placeholder-icon">▶</span>
+              <p class="pd-placeholder-text">gameplay video coming soon</p>
+              <p class="pd-placeholder-hint">drop hotdawgs-gameplay.mp4 into assets/</p>
+            </div>
+            <p class="pd-caption">HotDawgs — in-game footage</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">How it works</span>
+            <p class="pd-text">Customers spawn at a fixed point and walk to your stand autonomously. When they arrive, their order appears floating above their head. You pick it up, build the hot dog and hand it over. Get it wrong or take too long — you lose a life. Lose all three, game over.</p>
+            <p class="pd-text" style="margin-top: 12px;">There's a lot of room to grow here. A progression system for upgrading your stand, more complex orders, rush hour moments — the foundation is solid enough to build on.</p>
+          </div>
+
+          <!-- Screenshots placeholder -->
+          <div class="pd-media-block">
+            <span class="pd-label">Screenshots</span>
+            <div class="pd-placeholder-grid">
+              <div class="pd-placeholder-media pd-placeholder-sm">
+                <span class="pd-placeholder-icon">⬜</span>
+                <p class="pd-placeholder-hint">hotdawgs-01.png</p>
+              </div>
+              <div class="pd-placeholder-media pd-placeholder-sm">
+                <span class="pd-placeholder-icon">⬜</span>
+                <p class="pd-placeholder-hint">hotdawgs-02.png</p>
+              </div>
+            </div>
+            <p class="pd-caption">Environment & gameplay screenshots</p>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">What I built</span>
+            <ul class="pd-role-list">
+              <li>Full environment design — stand, surrounding area, props</li>
+              <li>Customer AI — spawning, pathfinding to the stand, order logic</li>
+              <li>Order system — floating UI above customer heads, validation</li>
+              <li>Life & game over system</li>
+            </ul>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Tech</span>
+            <div class="pd-challenges">
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">Customer logic (C#)</span>
+                <p class="pd-text">Each customer is an agent with states: spawning → routing → waiting → leaving. NavMesh handles pathfinding to the stand. Once they arrive, a timer starts. If the player doesn't respond in time, they leave and you take a hit.</p>
+              </div>
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">Order UI</span>
+                <p class="pd-text">Orders are world-space UI elements that hover above the customer's head and rotate to always face the camera. Makes it readable from any angle without cluttering the screen.</p>
+              </div>
+              <div class="pd-challenge">
+                <span class="pd-challenge-label">Environment</span>
+                <p class="pd-text">Built entirely in Unity — modeled and placed the stand, street props and surrounding space to give it a street-food market feel without overloading the scene.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pd-section">
+            <span class="pd-label">Team</span>
+            <p class="pd-text">Duo project. I handled environment design and programming — mainly the customer logic and order system. Working with someone else made me familiar with using version control and collaborative development practices. For this we used GitHub.</p>
+          </div>
+
+          <div class="pd-footer">
+            <button class="back-to-top">↑ back to top</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- placeholder: utopia -->
+      <div class="project-content" id="content-project4">
+        <p class="project-placeholder">→ Content coming soon<br>Imagine a really great project!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel" id="panel-about" role="dialog" aria-modal="true" aria-label="About Me">
+    <div class="panel-header">
+      <span class="panel-title">about me</span>
+      <button class="panel-close" data-close="about" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-body about-body">
+      
+      <div class="about-top-section">
+        <div class="about-text">
+          <p class="large-text">I'm a Media and Interaction Design student based in Osnabrück, currently enrolled in my fourth semester. I love bringing my ideas to life and presenting them in creative ways.</p>
+          <p>Besides my studies I'm working as a Community Manager overseeing social media accounts of brands such as Condor, OBI and DGB.</p>
+        </div> 
+
+        <div class="about-photo-frame">
+          <img src="assets/photo2.jpeg" alt="Marlon Lutete" class="about-photo-cropped" />
+        </div>
+      </div>
+
+<section class="cv-container">
+        <div class="cv-row">
+  <div class="cv-column">
+    <img src="assets/Education Tree.svg" alt="Education" class="cv-svg">
+  </div>
+  <div class="cv-column">
+    <img src="assets/Experience Tree.svg" alt="Experience" class="cv-svg">
+  </div>
+</div>
+</section>
+
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <div id="custom-cursor"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
