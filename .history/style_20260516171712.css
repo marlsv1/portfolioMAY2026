@@ -1,0 +1,1515 @@
+/* ============================================
+   MARLON LUTETE — PORTFOLIO
+   style.css
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --gray-line: #e0e0e0;
+  --gray-muted: #999;
+  --gray-bg: #f7f7f7;
+  --header-h: 36px;
+  --col-left-w: 320px;
+  --col-right-w: 320px;
+  --font-main: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-main);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom cursor only on devices with a precise pointer (mouse) */
+@media (pointer: fine) {
+  html, body { cursor: none; }
+  a, button, [role="button"] { cursor: none; }
+}
+
+/* Custom cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--black);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.12s ease, height 0.12s ease, border-radius 0.12s ease;
+  will-change: transform;
+}
+
+/* Pointer state — teardrop/arrow feel: slightly larger circle */
+#custom-cursor.is-pointer {
+  width: 16px;
+  height: 16px;
+}
+
+/* cursor:none for these is handled by the @media (pointer:fine) block above */
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--black);
+  background: var(--white);
+  z-index: 400;
+}
+
+.header-left {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--gray-line);
+}
+
+.logo {
+  font-family: var(--font-main);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--black);
+}
+
+.logo sup {
+  font-size: 9px;
+  vertical-align: super;
+  font-weight: 400;
+}
+
+/* BREADCRUMB / TABS */
+.breadcrumb {
+  display: flex;
+  position: absolute;
+  align-items: stretch;
+  justify-content: center;
+  left: var(--col-left-w);
+  right: var(--col-right-w);
+  height: 100%;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.breadcrumb .tab {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--black);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--gray-line);
+  cursor: inherit;
+  white-space: nowrap;
+  transition: background 0.1s;
+  outline: none;
+  position: relative;
+  gap: 8px;
+}
+
+/* separator arrow between tabs */
+.breadcrumb .tab:not(:first-child)::before {
+  content: '›';
+  color: var(--gray-muted);
+  font-size: 14px;
+  margin-right: 2px;
+}
+
+.breadcrumb .tab:hover {
+  background: var(--gray-bg);
+}
+
+.breadcrumb .tab.active {
+  background: var(--black);
+  color: var(--white);
+  border-right-color: var(--black);
+}
+
+.header-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-left: 1px solid var(--gray-line);
+}
+
+.clock {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+/* ============================================
+   MAIN GRID
+   ============================================ */
+
+#main-grid {
+  display: grid;
+  grid-template-columns: var(--col-left-w) 1fr var(--col-right-w);
+  min-height: 100vh;
+  padding-top: var(--header-h);
+  position: relative;
+  z-index: 1;
+}
+
+.col {
+  padding: 40px 36px;
+  position: relative;
+}
+
+.col-left,
+.col-right {
+  background: var(--white);
+}
+
+.col-left {
+  border-right: 1px solid var(--gray-line);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.col-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid only in the middle column */
+.col-mid::before {
+  content: '';
+  position: absolute;
+  /* inset equally from the column edges */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px);
+  background-size: 36px 36px;
+  /* Center the grid so margins left/right are equal */
+  background-position: center center;
+  z-index: 0;
+}
+
+.folders-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.col-right {
+  border-left: 1px solid var(--gray-line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+/* ============================================
+   LEFT COLUMN — GREETING
+   ============================================ */
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.greeting p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+#greeting-word::after {
+  content: '\a0'; /* Unsichtbares Leerzeichen */
+  display: inline-block;
+  width: 0;       /* Nimmt keinen horizontalen Platz weg */
+}
+
+/* Der blinkende Schreibmaschinen-Cursor */
+.typewriter-cursor {
+  display: inline-block;
+  border-right: 7px solid var(--black);
+  height: 1em;
+  padding-right: 5px;
+  animation: greeting-cursor-blink 1.5s step-end infinite;
+  
+}
+
+@keyframes greeting-cursor-blink {
+  from, to { border-right-color: transparent }
+  50% { border-right-color: var(--black); }
+}
+
+/* ============================================
+   EYE
+   ============================================ */
+
+.eye-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.eye-container {
+  position: relative;
+  width: 190px;
+  height: 87px;
+}
+
+.eye-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.eye-pupil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.08s ease-out;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* eye-dot removed */
+
+/* ============================================
+   SKILL LIST
+   ============================================ */
+
+.skill-list {
+  list-style: none;
+  border-top: 1px solid var(--gray-line);
+  margin-top: auto;
+}
+
+.skill-list li {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-line);
+  color: var(--black);
+}
+
+/* ============================================
+   MIDDLE COLUMN — FOLDERS
+   ============================================ */
+
+.folders-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.folder-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: inherit;
+  padding: 12px;
+  border-radius: 2px;
+  transition: transform 0.15s ease;
+  outline: none;
+  width: 200px;
+}
+
+.folder-btn:hover {
+  transform: translateY(-3px);
+}
+
+.folder-btn:hover .folder-closed {
+  display: none;
+}
+
+.folder-btn:hover .folder-opened {
+  display: block;
+}
+
+/* Fixed container — same viewBox dimensions for both open/closed SVGs */
+.folder-icon-wrap {
+  display: block;
+  width: 200px;
+  height: 92px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.folder-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.folder-opened {
+  display: none;
+}
+
+.folder-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  text-align: center;
+  width: 100%;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RIGHT COLUMN — PROFILE
+   ============================================ */
+
+.profile-photo-frame {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 2/3;
+  flex-shrink: 0;
+
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-position: center center;
+  display: block;
+}
+
+.profile-info {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-info p {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.profile-info .muted {
+  color: var(--gray-muted);
+}
+
+.email-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  margin-top: 6px;
+  transition: opacity 0.15s;
+}
+
+.email-link:hover {
+  opacity: 0.5;
+}
+
+/* ============================================
+   PANELS (OVERLAY WINDOWS)
+   ============================================ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.08);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.backdrop.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.panel {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fafafa;
+  border-top: 1px solid var(--black);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel.visible {
+  transform: translateY(0);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 48px;
+  border-bottom: 1px solid var(--gray-line);
+  flex-shrink: 0;
+}
+
+.panel-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.panel-close {
+  background: none;
+  border: none;
+  cursor: inherit;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--black);
+  padding: 4px 0 4px 16px;
+  transition: opacity 0.1s;
+  font-family: var(--font-mono);
+  font-weight: 300;
+  outline: none;
+}
+
+.panel-close:hover {
+  opacity: 0.4;
+}
+
+.panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px 40px;
+}
+
+/* Projects list inside panel — text only, no folders */
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.project-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--gray-line);
+  cursor: inherit;
+  padding: 20px 0;
+  text-align: left;
+  transition: padding-left 0.15s ease, opacity 0.15s ease;
+  outline: none;
+  width: 100%;
+}
+
+.project-item:first-child {
+  border-top: 1px solid var(--gray-line);
+}
+
+.project-item:hover {
+  padding-left: 8px;
+  opacity: 0.6;
+}
+
+/* Remove old folder wrap styles in project panel */
+.project-folder-wrap { display: none; }
+
+.project-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--black);
+}
+
+.project-sub {
+  font-size: 11px;
+  color: var(--gray-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* Project detail placeholder */
+.project-placeholder {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--gray-muted);
+  font-family: var(--font-mono);
+}
+
+/* About panel */
+/* ============================================
+   ABOUT PANEL — NEW STRUCTURE
+   ============================================ */
+
+.about-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* Abstand zwischen About-Text und Lebenslauf */
+}
+
+.about-top-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Text breiter als Bild */
+  gap: 60px;
+  align-items: start;
+}
+
+.about-text h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.about-text .large-text {
+  font-size: clamp(18px, 2vw, 24px); /* Hier ist der gewünschte große Text */
+  line-height: 1.4;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  max-width: 550px;
+}
+
+/* Bild-Frame mit dem spezifischen Crop aus deiner Referenz */
+.about-photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Hochformat wie in der Referenz */
+  border: 1px solid var(--black);
+  overflow: hidden;
+}
+
+.about-photo-cropped {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 20%; /* Justiert den Fokus auf die Person/Kappe */
+}
+
+/* ============================================
+   CV TREE — SLACK/TREE STYLE
+   ============================================ */
+.cv-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px; /* Abstand zwischen Education und Experience */
+  margin-top: 30px;
+  width: 100%;
+}
+
+.cv-column {
+  flex: 0 1 auto; /* Verhindert unnatürliches Strecken */
+}
+
+.cv-svg {
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Responsives Layout für Smartphones */
+@media (max-width: 768px) {
+  .cv-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+  
+  .about-photo-frame {
+    max-width: 400px;
+  }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 960px) {
+  :root {
+    --col-left-w: 260px;
+    --col-right-w: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  #main-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .col {
+    padding: 32px 24px;
+  }
+
+  .col-left {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-line);
+  }
+
+  .col-mid {
+    border-bottom: 1px solid var(--gray-line);
+    padding: 48px 24px;
+  }
+
+  .col-right {
+    border-left: none;
+    align-items: flex-start;
+  }
+
+  .profile-photo-frame {
+    max-width: 280px;
+  }
+
+  .profile-info {
+    text-align: left;
+  }
+
+  .folders-wrap {
+    gap: 32px;
+  }
+
+  .panel {
+    width: 100vw;
+    border-left: none;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+
+  .breadcrumb {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  .greeting p {
+    font-size: 38px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .folders-wrap {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-line);
+  border-radius: 2px;
+}
+
+
+/* ============================================
+   Lebenslauf
+   ============================================ */
+
+   
+/* ============================================
+   PROJECT CONTENT BLOCKS
+   ============================================ */
+
+/* All hidden by default — JS toggles the right one */
+.project-content {
+  display: none;
+}
+
+/* ============================================
+   PROJECT DETAIL — LAYOUT
+   ============================================ */
+
+/* Centered wrapper — all project detail content */
+.pd-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-bottom: 80px;
+}
+
+/* Header: title + tags */
+.pd-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.pd-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.pd-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--black);
+}
+
+.pd-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gray-muted);
+  letter-spacing: 0.06em;
+}
+
+.pd-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--gray-muted);
+  border: 1px solid var(--gray-line);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* Generic section */
+.pd-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pd-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-muted);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-line);
+  display: block;
+}
+
+.pd-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Media blocks: video + screenshot */
+.pd-media-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Video — contained, max 560px, centered */
+.pd-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  background: #000;
+  border: 1px solid var(--gray-line);
+  aspect-ratio: 16 / 9;
+}
+
+.pd-video-wrap iframe,
+.pd-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Screenshot */
+.pd-screenshot-wrap {
+  width: 100%;
+  border: 1px solid var(--gray-line);
+  overflow: hidden;
+}
+
+.pd-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pd-caption {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Challenges */
+.pd-challenges {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pd-challenge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.pd-challenge:first-child {
+  padding-top: 0;
+}
+
+.pd-challenge:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pd-challenge-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--black);
+}
+
+/* Role list */
+.pd-role-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-role-list li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-line);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pd-role-list li::before {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-muted);
+  flex-shrink: 0;
+}
+
+/* Footer + back to top */
+.pd-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-line);
+}
+
+/* Back to top — matches breadcrumb/tab look */
+.back-to-top {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  border-bottom: 2px solid var(--black);
+  padding: 8px 24px;
+  cursor: inherit;
+  outline: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.back-to-top:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+/* ============================================
+   RESPONSIVE — PROJECT DETAIL
+   ============================================ */
+
+@media (max-width: 768px) {
+  .pd-wrap {
+    gap: 48px;
+  }
+
+  .pd-title-group {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================
+   PORTRAIT VIDEO (Zap app demo)
+   ============================================ */
+
+/* Portrait video (Zap demo) — simple flow, no absolute positioning */
+.pd-video-portrait {
+  aspect-ratio: unset !important;
+  background: transparent !important;
+  border: none !important;
+  max-width: 280px !important;
+  padding: 0 !important;
+}
+
+.pd-video-portrait video {
+  position: static !important;
+  inset: unset !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  border: 1px solid var(--gray-line);
+}
+
+/* ============================================
+   CAROUSEL
+   ============================================ */
+
+.pd-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pd-slides {
+  position: relative;
+}
+
+.pd-slide {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  animation: slide-in 0.2s ease;
+}
+
+.pd-slide.active {
+  display: flex;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pd-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--gray-line);
+}
+
+.pd-slide-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pd-slide-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-muted);
+}
+
+.pd-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pd-prev,
+.pd-next {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background: none;
+  border: 1px solid var(--gray-line);
+  color: var(--black);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: inherit;
+  outline: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.pd-prev:hover,
+.pd-next:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.pd-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pd-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gray-line);
+  border: none;
+  cursor: inherit;
+  outline: none;
+  padding: 0;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.pd-dot.active {
+  background: var(--black);
+  transform: scale(1.3);
+}
+
+/* ============================================
+   MEDIA PLACEHOLDER BLOCKS
+   ============================================ */
+
+.pd-placeholder-media {
+  width: 100%;
+  background: var(--gray-bg);
+  border: 1px dashed var(--gray-line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.pd-placeholder-icon {
+  font-size: 22px;
+  opacity: 0.3;
+}
+
+.pd-placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-muted);
+  letter-spacing: 0.04em;
+}
+
+.pd-placeholder-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-line);
+  letter-spacing: 0.04em;
+}
+
+/* Two-column screenshot grid */
+.pd-placeholder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.pd-placeholder-sm {
+  padding: 32px 16px;
+}
+
+@media (max-width: 600px) {
+  .pd-placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   MOBILE — COMPLETE OVERHAUL
+   max-width: 768px
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* ── Cursor: custom cursor off on touch ── */
+  #custom-cursor {
+    display: none !important;
+  }
+
+  /* ── Header: Logo links, Uhr weg, Breadcrumb füllt Rest ── */
+  #site-header {
+    height: 48px;
+    position: fixed;
+  }
+
+  .header-right {
+    display: none; /* Uhr verstecken — zu wenig Platz */
+  }
+
+  .header-left {
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+
+  /* Breadcrumb: normal flow statt absolute */
+  .breadcrumb {
+    position: static;
+    flex: 1;
+    left: unset;
+    right: unset;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* hide scrollbar but keep scrollable */
+    scrollbar-width: none;
+  }
+
+  .breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+
+  .breadcrumb .tab {
+    padding: 0 14px;
+    font-size: 11px;
+    flex-shrink: 0;
+    cursor: pointer !important;
+    /* Active tab: fill with black */
+  }
+
+  /* ── Main grid: single column, kompakt ── */
+  #main-grid {
+    padding-top: 48px; /* match new header height */
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Left column ── */
+  .col {
+    padding: 28px 20px;
+  }
+
+  .col-left {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-line);
+    gap: 28px;
+  }
+
+  .greeting p {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  /* Eye: kleiner auf Mobile */
+  .eye-container {
+    width: 140px;
+    height: 64px;
+  }
+
+  /* Skill list kompakter */
+  .skill-list li {
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  /* ── Middle column: Ordner ── */
+  .col-mid {
+    padding: 36px 20px;
+    border-bottom: 1px solid var(--gray-line);
+  }
+
+  .folders-wrap {
+    gap: 24px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .folder-btn {
+    width: 130px;
+    gap: 12px;
+    padding: 8px;
+    cursor: pointer !important;
+  }
+
+  .folder-icon-wrap {
+    width: 130px;
+    height: 60px;
+  }
+
+  .folder-label {
+    font-size: 12px;
+  }
+
+  /* ── Right column: Profil ── */
+  .col-right {
+    border-left: none;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .profile-photo-frame {
+    max-width: 200px;
+    aspect-ratio: 2/3;
+  }
+
+  .profile-info {
+    text-align: left;
+  }
+
+  /* ── Panels: full screen, slide from bottom ── */
+  .panel {
+    top: 48px; /* match new header height */
+    border-left: none;
+    border-right: none;
+  }
+
+  .panel-header {
+    padding: 0 20px;
+    height: 44px;
+  }
+
+  .panel-body {
+    padding: 28px 20px;
+  }
+
+  /* Panel close button: größerer Touch-Target */
+  .panel-close {
+    font-size: 20px;
+    padding: 8px 0 8px 20px;
+    cursor: pointer !important;
+  }
+
+  /* ── Projects list ── */
+  .project-grid {
+    display: flex !important; /* override grid */
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-item {
+    padding: 18px 0;
+    cursor: pointer !important;
+    /* Larger touch target */
+    min-height: 56px;
+  }
+
+  .project-item:hover {
+    padding-left: 0; /* disable hover shift on touch */
+    opacity: 1;
+  }
+
+  .project-item:active {
+    opacity: 0.5;
+  }
+
+  /* ── Project detail ── */
+  .pd-wrap {
+    gap: 44px;
+    padding-bottom: 60px;
+    max-width: 100%;
+  }
+
+  .pd-title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .pd-section {
+    gap: 16px;
+  }
+
+  .pd-text {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  /* Video: volle Breite auf Mobile */
+  .pd-video-wrap {
+    max-width: 100%;
+  }
+
+  /* Portrait video (Zap): zentriert, schmal */
+  .pd-video-portrait {
+    max-width: 240px !important;
+  }
+
+  /* Challenges */
+  .pd-challenge {
+    padding: 14px 0;
+  }
+
+  /* Role list */
+  .pd-role-list li {
+    font-size: 13px;
+    padding: 10px 0;
+    /* Bigger touch feel */
+  }
+
+  /* Tech items: stack statt grid */
+  .tech-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  /* Carousel */
+  .pd-prev,
+  .pd-next {
+    width: 40px;
+    height: 40px;
+    cursor: pointer !important;
+  }
+
+  .pd-dot {
+    width: 8px;
+    height: 8px;
+    cursor: pointer !important;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer !important;
+  }
+
+  /* Screenshot placeholder grid: 1 column */
+  .pd-placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About panel */
+  .about-top-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-photo-frame {
+    max-width: 260px;
+  }
+
+  .about-text .large-text {
+    font-size: 17px;
+  }
+}
+
+/* ── Extra small: 380px und kleiner ── */
+@media (max-width: 380px) {
+  .folders-wrap {
+    gap: 16px;
+  }
+
+  .folder-btn {
+    width: 110px;
+  }
+
+  .folder-icon-wrap {
+    width: 110px;
+    height: 51px;
+  }
+
+  .pd-title {
+    font-size: 28px;
+  }
+
+  .panel-body {
+    padding: 20px 16px;
+  }
+
+  .col {
+    padding: 24px 16px;
+  }
+}

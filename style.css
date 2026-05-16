@@ -29,7 +29,12 @@ html, body {
   color: var(--black);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
+}
+
+/* Custom cursor only on devices with a precise pointer (mouse) */
+@media (pointer: fine) {
+  html, body { cursor: none; }
+  a, button, [role="button"] { cursor: none; }
 }
 
 /* Custom cursor */
@@ -54,9 +59,7 @@ html, body {
   height: 16px;
 }
 
-a, button, [role="button"] {
-  cursor: none;
-}
+/* cursor:none for these is handled by the @media (pointer:fine) block above */
 
 /* ============================================
    HEADER
@@ -124,7 +127,7 @@ a, button, [role="button"] {
   background: transparent;
   border: none;
   border-right: 1px solid var(--gray-line);
-  cursor: none;
+  cursor: inherit;
   white-space: nowrap;
   transition: background 0.1s;
   outline: none;
@@ -352,7 +355,7 @@ a, button, [role="button"] {
   gap: 16px;
   background: none;
   border: none;
-  cursor: none;
+  cursor: inherit;
   padding: 12px;
   border-radius: 2px;
   transition: transform 0.15s ease;
@@ -517,7 +520,7 @@ a, button, [role="button"] {
 .panel-close {
   background: none;
   border: none;
-  cursor: none;
+  cursor: inherit;
   font-size: 22px;
   line-height: 1;
   color: var(--black);
@@ -555,7 +558,7 @@ a, button, [role="button"] {
   background: none;
   border: none;
   border-bottom: 1px solid var(--gray-line);
-  cursor: none;
+  cursor: inherit;
   padding: 20px 0;
   text-align: left;
   transition: padding-left 0.15s ease, opacity 0.15s ease;
@@ -1010,7 +1013,7 @@ a, button, [role="button"] {
   border: 1px solid var(--gray-line);
   border-bottom: 2px solid var(--black);
   padding: 8px 24px;
-  cursor: none;
+  cursor: inherit;
   outline: none;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
@@ -1129,7 +1132,7 @@ a, button, [role="button"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: none;
+  cursor: inherit;
   outline: none;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
@@ -1153,7 +1156,7 @@ a, button, [role="button"] {
   border-radius: 50%;
   background: var(--gray-line);
   border: none;
-  cursor: none;
+  cursor: inherit;
   outline: none;
   padding: 0;
   transition: background 0.15s, transform 0.15s;
@@ -1215,5 +1218,298 @@ a, button, [role="button"] {
 @media (max-width: 600px) {
   .pd-placeholder-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   MOBILE — COMPLETE OVERHAUL
+   max-width: 768px
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* ── Cursor: custom cursor off on touch ── */
+  #custom-cursor {
+    display: none !important;
+  }
+
+  /* ── Header: Logo links, Uhr weg, Breadcrumb füllt Rest ── */
+  #site-header {
+    height: 48px;
+    position: fixed;
+  }
+
+  .header-right {
+    display: none; /* Uhr verstecken — zu wenig Platz */
+  }
+
+  .header-left {
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+
+  /* Breadcrumb: normal flow statt absolute */
+  .breadcrumb {
+    position: static;
+    flex: 1;
+    left: unset;
+    right: unset;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* hide scrollbar but keep scrollable */
+    scrollbar-width: none;
+  }
+
+  .breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+
+  .breadcrumb .tab {
+    padding: 0 14px;
+    font-size: 11px;
+    flex-shrink: 0;
+    cursor: pointer !important;
+    /* Active tab: fill with black */
+  }
+
+  /* ── Main grid: single column, kompakt ── */
+  #main-grid {
+    padding-top: 48px; /* match new header height */
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Left column ── */
+  .col {
+    padding: 28px 20px;
+  }
+
+  .col-left {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-line);
+    gap: 28px;
+  }
+
+  .greeting p {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  /* Eye: kleiner auf Mobile */
+  .eye-container {
+    width: 140px;
+    height: 64px;
+  }
+
+  /* Skill list kompakter */
+  .skill-list li {
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  /* ── Middle column: Ordner ── */
+  .col-mid {
+    padding: 36px 20px;
+    border-bottom: 1px solid var(--gray-line);
+  }
+
+  .folders-wrap {
+    gap: 24px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .folder-btn {
+    width: 130px;
+    gap: 12px;
+    padding: 8px;
+    cursor: pointer !important;
+  }
+
+  .folder-icon-wrap {
+    width: 130px;
+    height: 60px;
+  }
+
+  .folder-label {
+    font-size: 12px;
+  }
+
+  /* ── Right column: Profil ── */
+  .col-right {
+    border-left: none;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .profile-photo-frame {
+    max-width: 200px;
+    aspect-ratio: 2/3;
+  }
+
+  .profile-info {
+    text-align: left;
+  }
+
+  /* ── Panels: full screen, slide from bottom ── */
+  .panel {
+    top: 48px; /* match new header height */
+    border-left: none;
+    border-right: none;
+  }
+
+  .panel-header {
+    padding: 0 20px;
+    height: 44px;
+  }
+
+  .panel-body {
+    padding: 28px 20px;
+  }
+
+  /* Panel close button: größerer Touch-Target */
+  .panel-close {
+    font-size: 20px;
+    padding: 8px 0 8px 20px;
+    cursor: pointer !important;
+  }
+
+  /* ── Projects list ── */
+  .project-grid {
+    display: flex !important; /* override grid */
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-item {
+    padding: 18px 0;
+    cursor: pointer !important;
+    /* Larger touch target */
+    min-height: 56px;
+  }
+
+  .project-item:hover {
+    padding-left: 0; /* disable hover shift on touch */
+    opacity: 1;
+  }
+
+  .project-item:active {
+    opacity: 0.5;
+  }
+
+  /* ── Project detail ── */
+  .pd-wrap {
+    gap: 44px;
+    padding-bottom: 60px;
+    max-width: 100%;
+  }
+
+  .pd-title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .pd-section {
+    gap: 16px;
+  }
+
+  .pd-text {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  /* Video: volle Breite auf Mobile */
+  .pd-video-wrap {
+    max-width: 100%;
+  }
+
+  /* Portrait video (Zap): zentriert, schmal */
+  .pd-video-portrait {
+    max-width: 240px !important;
+  }
+
+  /* Challenges */
+  .pd-challenge {
+    padding: 14px 0;
+  }
+
+  /* Role list */
+  .pd-role-list li {
+    font-size: 13px;
+    padding: 10px 0;
+    /* Bigger touch feel */
+  }
+
+  /* Tech items: stack statt grid */
+  .tech-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  /* Carousel */
+  .pd-prev,
+  .pd-next {
+    width: 40px;
+    height: 40px;
+    cursor: pointer !important;
+  }
+
+  .pd-dot {
+    width: 8px;
+    height: 8px;
+    cursor: pointer !important;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer !important;
+  }
+
+  /* Screenshot placeholder grid: 1 column */
+  .pd-placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About panel */
+  .about-top-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-photo-frame {
+    max-width: 260px;
+  }
+
+  .about-text .large-text {
+    font-size: 17px;
+  }
+}
+
+/* ── Extra small: 380px und kleiner ── */
+@media (max-width: 380px) {
+  .folders-wrap {
+    gap: 16px;
+  }
+
+  .folder-btn {
+    width: 110px;
+  }
+
+  .folder-icon-wrap {
+    width: 110px;
+    height: 51px;
+  }
+
+  .pd-title {
+    font-size: 28px;
+  }
+
+  .panel-body {
+    padding: 20px 16px;
+  }
+
+  .col {
+    padding: 24px 16px;
   }
 }
