@@ -14,10 +14,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 :root {
   --black: #1a1a1a;
   --white: #ffffff;

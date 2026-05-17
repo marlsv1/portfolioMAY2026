@@ -10,12 +10,8 @@
 }
 
 a {
-  color: var(--black);
+  color: black;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 :root {
