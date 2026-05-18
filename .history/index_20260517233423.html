@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marlon Loaiza - Portfolio</title>
     <link rel="stylesheet" href="style.css" />
-    <script>
-      // Set theme before first paint to prevent flash
-      // Priority: 1. saved choice, 2. system preference, 3. light mode
-      const t = localStorage.getItem('theme')
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,24 +15,7 @@
   <body>
     <header id="site-header">
       <div class="header-left">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-          <!-- Moon: shown in light mode -->
-          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-          <!-- Sun: shown in dark mode -->
-          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        </button>
+        <span class="logo">m<sup>*</sup></span>
       </div>
       <nav class="breadcrumb" id="breadcrumb">
         <button class="tab active" data-view="home">home</button>
@@ -58,12 +34,13 @@
 
         <div class="eye-wrapper" id="eye-wrapper" aria-hidden="true">
           <div class="eye-container">
-            <svg class="eye-border" viewBox="0 0 181.58 82.76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path class="e-border" d="M180.58,41.38c-1.11,8.08-40.2,40.38-89.78,40.38S.44,45.55,1.01,41.38C2.11,33.3,41.2,1,90.79,1s90.35,36.27,89.78,40.38Z"/>
-          </svg>
-            <svg class="eye-pupil" id="eye-pupil" viewBox="0 0 181.58 82.76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle class="e-pupil" cx="90.79" cy="41.38" r="21.27"/>
-            </svg>
+            <img src="assets/eye_border.svg" class="eye-border" alt="" />
+            <img
+              src="assets/eye_pupil.svg"
+              class="eye-pupil"
+              id="eye-pupil"
+              alt=""
+            />
           </div>
         </div>
 
@@ -83,14 +60,16 @@
             aria-label="Open Projects"
           >
             <span class="folder-icon-wrap">
-              <svg class="folder-img folder-closed" viewBox="7 115 76 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="f-tab" d="M10.77,116.85h16.01c1.16,0,2.22.67,2.72,1.72l4.02,6.48c.5,1.05,1.56.72,2.72.72h42.05c1.55,0,2.8,1.25,2.8,2.8v40c0,1.53-1.23,2.78-2.76,2.8l-67.52.87c-1.56.02-2.83-1.24-2.83-2.8v-49.79c0-1.55,1.25-2.8,2.8-2.8Z"/>
-                <path class="f-body" d="M33.52,125.05H10.77c-1.54,0-2.8,1.25-2.8,2.8v41.59c0,1.54,1.25,2.8,2.8,2.8h67.52c1.54,0,2.8-1.25,2.8-2.8v-41.59c0-1.54-1.25-2.8-2.8-2.8h-44.77Z"/>
-              </svg>
-              <svg class="folder-img folder-opened" viewBox="106 115 76 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="f-tab" d="M109.81,116.85h16.01c1.16,0,2.22.67,2.72,1.72l4.02,6.48c.5,1.05,1.56.72,2.72.72h42.05c1.55,0,2.8,1.25,2.8,2.8v40c0,1.53-1.23,2.78-2.76,2.8l-67.52.87c-1.56.02-2.83-1.24-2.83-2.8v-49.79c0-1.55,1.25-2.8,2.8-2.8Z"/>
-                <path class="f-body" d="M137.55,132.05h-22.75c-1.54,0-2.8,1.25-2.8,2.8l-5,34.59c0,1.54,1.25,2.8,2.8,2.8h67.52c1.54,0,2.8-1.25,2.8-2.8l5-34.59c0-1.54-1.25-2.8-2.8-2.8h-44.77Z"/>
-              </svg>
+              <img
+                src="assets/folder_closed2.svg"
+                class="folder-img folder-closed"
+                alt="folder closed"
+              />
+              <img
+                src="assets/folder_opened2.svg"
+                class="folder-img folder-opened"
+                alt="folder open"
+              />
             </span>
             <span class="folder-label">projects</span>
           </button>
@@ -101,14 +80,16 @@
             aria-label="Open About Me"
           >
             <span class="folder-icon-wrap">
-              <svg class="folder-img folder-closed" viewBox="7 115 76 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="f-tab" d="M10.77,116.85h16.01c1.16,0,2.22.67,2.72,1.72l4.02,6.48c.5,1.05,1.56.72,2.72.72h42.05c1.55,0,2.8,1.25,2.8,2.8v40c0,1.53-1.23,2.78-2.76,2.8l-67.52.87c-1.56.02-2.83-1.24-2.83-2.8v-49.79c0-1.55,1.25-2.8,2.8-2.8Z"/>
-                <path class="f-body" d="M33.52,125.05H10.77c-1.54,0-2.8,1.25-2.8,2.8v41.59c0,1.54,1.25,2.8,2.8,2.8h67.52c1.54,0,2.8-1.25,2.8-2.8v-41.59c0-1.54-1.25-2.8-2.8-2.8h-44.77Z"/>
-              </svg>
-              <svg class="folder-img folder-opened" viewBox="106 115 76 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="f-tab" d="M109.81,116.85h16.01c1.16,0,2.22.67,2.72,1.72l4.02,6.48c.5,1.05,1.56.72,2.72.72h42.05c1.55,0,2.8,1.25,2.8,2.8v40c0,1.53-1.23,2.78-2.76,2.8l-67.52.87c-1.56.02-2.83-1.24-2.83-2.8v-49.79c0-1.55,1.25-2.8,2.8-2.8Z"/>
-                <path class="f-body" d="M137.55,132.05h-22.75c-1.54,0-2.8,1.25-2.8,2.8l-5,34.59c0,1.54,1.25,2.8,2.8,2.8h67.52c1.54,0,2.8-1.25,2.8-2.8l5-34.59c0-1.54-1.25-2.8-2.8-2.8h-44.77Z"/>
-              </svg>
+              <img
+                src="assets/folder_closed2.svg"
+                class="folder-img folder-closed"
+                alt="folder closed"
+              />
+              <img
+                src="assets/folder_opened2.svg"
+                class="folder-img folder-opened"
+                alt="folder open"
+              />
             </span>
             <span class="folder-label">about me</span>
           </button>
@@ -361,8 +342,7 @@
                 could ever tell you.
                 <br /><br />
                 Note: Prototypes shown here do not have blurred faces. The
-                actual Figma file does, which are only revealed after a match is
-                made.
+                actual Figma file does, which are only revealed after a match is made.
               </p>
             </div>
 
@@ -407,7 +387,7 @@
                 <img
                   src="assets/User Journey.png"
                   alt="User Journey Map"
-                  class="pd-screenshot zap-diagram"
+                  class="pd-screenshot"
                 />
               </div>
               <p class="pd-caption">
@@ -433,7 +413,7 @@
                 <img
                   src="assets/Flowchart.png"
                   alt="App Flowchart"
-                  class="pd-screenshot zap-diagram"
+                  class="pd-screenshot"
                 />
               </div>
               <p class="pd-caption">Onboarding flow mapped in Lucidchart</p>

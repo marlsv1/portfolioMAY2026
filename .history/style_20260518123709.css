@@ -1612,7 +1612,7 @@ html, body {
 .f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
 
 /* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
+[data-theme="dark"] .f-tab  { fill: var(--surface); stroke: var(--surface); }
 [data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
 
 /* ── Eye paths: same surface color as folders ── */

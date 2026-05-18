@@ -1612,33 +1612,21 @@ html, body {
 .f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
 
 /* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
+[data-theme="dark"] .f-tab  { fill: var(--surface); stroke: var(--black); }
+[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); }
 
-/* ── Eye paths: same surface color as folders ── */
-.e-border {
-  fill: #ffffff;
-  stroke: #231f20;
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
+/* ── Eye in dark mode: use filter on <img> tags ── */
+[data-theme="dark"] .eye-border {
+  filter: invert(1) brightness(0.12);
 }
-.e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+[data-theme="dark"] .eye-pupil {
+  filter: invert(1) brightness(0.28);
 }
 
-[data-theme="dark"] .e-border {
-  fill: var(--surface);
-  stroke: var(--black);
-}
-[data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
-}
-
-/* ── Zap diagrams: invert so black text → white ── */
+/* ── Zap diagrams: muted white, text stays readable ── */
 [data-theme="dark"] .pd-screenshot.zap-diagram {
-  filter: invert(1) brightness(0.85);
+  opacity: 0.75;
+  filter: brightness(0.88);
 }
 
 /* Mobile */

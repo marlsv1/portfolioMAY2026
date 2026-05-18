@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
       // Set theme before first paint to prevent flash
-      // Priority: 1. saved choice, 2. system preference, 3. light mode
-      const t = localStorage.getItem('theme')
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,12 +56,13 @@
 
         <div class="eye-wrapper" id="eye-wrapper" aria-hidden="true">
           <div class="eye-container">
-            <svg class="eye-border" viewBox="0 0 181.58 82.76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path class="e-border" d="M180.58,41.38c-1.11,8.08-40.2,40.38-89.78,40.38S.44,45.55,1.01,41.38C2.11,33.3,41.2,1,90.79,1s90.35,36.27,89.78,40.38Z"/>
-          </svg>
-            <svg class="eye-pupil" id="eye-pupil" viewBox="0 0 181.58 82.76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle class="e-pupil" cx="90.79" cy="41.38" r="21.27"/>
-            </svg>
+            <img src="assets/eye_border.svg" class="eye-border" alt="" />
+            <img
+              src="assets/eye_pupil.svg"
+              class="eye-pupil"
+              id="eye-pupil"
+              alt=""
+            />
           </div>
         </div>
 

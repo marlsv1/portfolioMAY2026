@@ -21,10 +21,9 @@ a:hover {
 :root {
   --black: #1a1a1a;
   --white: #ffffff;
-  --surface: #ffffff;
   --gray-line: #e0e0e0;
   --gray-muted: #999;
-  --gray-bg: #f7f7f7;
+  --gray-bg: var(--gray-bg);
   --header-h: 36px;
   --col-left-w: 320px;
   --col-right-w: 320px;
@@ -34,16 +33,15 @@ a:hover {
 
 /* ── Dark mode ── */
 [data-theme="dark"] {
-  --black: #ebebeb;
+  --black: #f0f0f0;
   --white: #111111;
-  --surface: #181818;
-  --gray-line: #272727;
-  --gray-muted: #555;
-  --gray-bg: #1e1e1e;
+  --gray-line: #2a2a2a;
+  --gray-muted: #666;
+  --gray-bg: #1a1a1a;
 }
 
 [data-theme="dark"] #custom-cursor {
-  background: var(--black);
+  background: #f0f0f0;
 }
 
 [data-theme="dark"] .col-mid::before {
@@ -120,7 +118,7 @@ html, body {
   align-items: stretch;
   justify-content: space-between;
   border-bottom: 1px solid var(--black);
-  background: var(--surface);
+  background: var(--white);
   z-index: 400;
 }
 
@@ -194,7 +192,7 @@ html, body {
 
 .breadcrumb .tab.active {
   background: var(--black);
-  color: var(--surface);
+  color: var(--white);
   border-right-color: var(--black);
 }
 
@@ -235,7 +233,7 @@ html, body {
 
 .col-left,
 .col-right {
-  background: var(--surface);
+  background: var(--white);
 }
 
 .col-left {
@@ -531,7 +529,7 @@ html, body {
   right: 0;
   bottom: 0;
   width: 100%;
-  background: var(--surface);
+  background: var(--gray-bg);
   border-top: 1px solid var(--black);
   z-index: 300;
   display: flex;
@@ -1606,39 +1604,18 @@ html, body {
 [data-theme="dark"] .icon-moon { display: none;  }
 [data-theme="dark"] .icon-sun  { display: block; }
 
-/* ── Folder SVGs: inline paths, styled per theme ── */
-/* Light mode defaults */
-.f-tab  { fill: #1a1a1a; stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-.f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-
-/* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
-
-/* ── Eye paths: same surface color as folders ── */
-.e-border {
-  fill: #ffffff;
-  stroke: #231f20;
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
-}
-.e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+/* ── Folder SVGs: invert in dark mode ── */
+[data-theme="dark"] .folder-img {
+  filter: invert(1);
 }
 
-[data-theme="dark"] .e-border {
-  fill: var(--surface);
-  stroke: var(--black);
-}
-[data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
+/* Eye in dark mode — subtle, matches dark background tone */
+[data-theme="dark"] .eye-border {
+  filter: invert(1) brightness(0.55);
 }
 
-/* ── Zap diagrams: invert so black text → white ── */
-[data-theme="dark"] .pd-screenshot.zap-diagram {
-  filter: invert(1) brightness(0.85);
+[data-theme="dark"] .eye-pupil {
+  filter: invert(1) brightness(0.65);
 }
 
 /* Mobile */

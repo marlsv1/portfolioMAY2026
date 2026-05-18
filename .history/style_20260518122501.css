@@ -1612,8 +1612,8 @@ html, body {
 .f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
 
 /* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
+[data-theme="dark"] .f-tab  { fill: var(--surface); stroke: var(--black); }
+[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); }
 
 /* ── Eye paths: same surface color as folders ── */
 .e-border {
@@ -1623,8 +1623,8 @@ html, body {
   stroke-width: 2px;
 }
 .e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+  fill: #ffffff;
+  stroke-miterlimit: 10;
 }
 
 [data-theme="dark"] .e-border {
@@ -1632,8 +1632,8 @@ html, body {
   stroke: var(--black);
 }
 [data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
+  fill: var(--surface);
+  stroke: var(--black);
 }
 
 /* ── Zap diagrams: invert so black text → white ── */

@@ -21,10 +21,9 @@ a:hover {
 :root {
   --black: #1a1a1a;
   --white: #ffffff;
-  --surface: #ffffff;
   --gray-line: #e0e0e0;
   --gray-muted: #999;
-  --gray-bg: #f7f7f7;
+  --gray-bg: var(--gray-bg);
   --header-h: 36px;
   --col-left-w: 320px;
   --col-right-w: 320px;
@@ -34,16 +33,15 @@ a:hover {
 
 /* ── Dark mode ── */
 [data-theme="dark"] {
-  --black: #ebebeb;
+  --black: #f0f0f0;
   --white: #111111;
-  --surface: #181818;
-  --gray-line: #272727;
-  --gray-muted: #555;
-  --gray-bg: #1e1e1e;
+  --gray-line: #2a2a2a;
+  --gray-muted: #666;
+  --gray-bg: #1a1a1a;
 }
 
 [data-theme="dark"] #custom-cursor {
-  background: var(--black);
+  background: #f0f0f0;
 }
 
 [data-theme="dark"] .col-mid::before {
@@ -120,15 +118,15 @@ html, body {
   align-items: stretch;
   justify-content: space-between;
   border-bottom: 1px solid var(--black);
-  background: var(--surface);
+  background: var(--white);
   z-index: 400;
 }
 
 .header-left {
   flex-shrink: 0;
   display: flex;
-  align-items: stretch;
-  padding: 0;
+  align-items: center;
+  padding: 0 20px;
   border-right: 1px solid var(--gray-line);
 }
 
@@ -194,7 +192,7 @@ html, body {
 
 .breadcrumb .tab.active {
   background: var(--black);
-  color: var(--surface);
+  color: var(--white);
   border-right-color: var(--black);
 }
 
@@ -235,7 +233,7 @@ html, body {
 
 .col-left,
 .col-right {
-  background: var(--surface);
+  background: var(--white);
 }
 
 .col-left {
@@ -531,7 +529,7 @@ html, body {
   right: 0;
   bottom: 0;
   width: 100%;
-  background: var(--surface);
+  background: var(--gray-bg);
   border-top: 1px solid var(--black);
   z-index: 300;
   display: flex;
@@ -1562,83 +1560,77 @@ html, body {
    THEME TOGGLE BUTTON
    ============================================ */
 
-/* ── Theme toggle button ── */
+/* ── Theme toggle button — sits separately from clock ── */
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
+  width: 48px;
   height: 100%;
   background: none;
   border: none;
+  border-right: 1px solid var(--gray-line);
   cursor: inherit;
   outline: none;
   padding: 0;
   flex-shrink: 0;
   transition: background 0.15s;
-  /* Ensure clicks always register */
-  pointer-events: all;
-  position: relative;
-  z-index: 1;
 }
 
 .theme-toggle:hover {
   background: var(--gray-bg);
 }
 
-/* SVG icons inside toggle */
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--black);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke 0.3s ease;
+/* ── Icon: CRESCENT in light mode, SUN in dark mode ── */
+.theme-toggle-icon {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--black);
+  position: relative;
   flex-shrink: 0;
-  pointer-events: none; /* clicks pass through to button */
+  /* Crescent: inner shadow clips the circle */
+  box-shadow: 3px -2px 0 1px var(--white), inset 0 0 0 0 transparent;
+  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
-.icon-moon { display: block; }
-.icon-sun  { display: none;  }
-
-[data-theme="dark"] .icon-moon { display: none;  }
-[data-theme="dark"] .icon-sun  { display: block; }
-
-/* ── Folder SVGs: inline paths, styled per theme ── */
-/* Light mode defaults */
-.f-tab  { fill: #1a1a1a; stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-.f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-
-/* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
-
-/* ── Eye paths: same surface color as folders ── */
-.e-border {
-  fill: #ffffff;
-  stroke: #231f20;
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
-}
-.e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+/* No rays pseudo-element in light mode */
+.theme-toggle-icon::before,
+.theme-toggle-icon::after {
+  content: none;
 }
 
-[data-theme="dark"] .e-border {
-  fill: var(--surface);
-  stroke: var(--black);
-}
-[data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
+/* Dark mode: FILLED circle = sun body */
+[data-theme="dark"] .theme-toggle-icon {
+  background: var(--black);
+  border-color: var(--black);
+  box-shadow: none;
 }
 
-/* ── Zap diagrams: invert so black text → white ── */
-[data-theme="dark"] .pd-screenshot.zap-diagram {
-  filter: invert(1) brightness(0.85);
+/* Sun rays via outline ring */
+[data-theme="dark"] .theme-toggle-icon::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  display: block;
+}
+
+/* ── Folder SVGs: invert in dark mode ── */
+[data-theme="dark"] .folder-img {
+  filter: invert(1);
+}
+
+/* Eye in dark mode — subtle, matches dark background tone */
+[data-theme="dark"] .eye-border {
+  filter: invert(1) brightness(0.55);
+}
+
+[data-theme="dark"] .eye-pupil {
+  filter: invert(1) brightness(0.65);
 }
 
 /* Mobile */

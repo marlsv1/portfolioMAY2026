@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
       // Set theme before first paint to prevent flash
-      // Priority: 1. saved choice, 2. system preference, 3. light mode
-      const t = localStorage.getItem('theme')
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -217,7 +215,7 @@
                 harmless kind, but the type that makes you idealize the past a
                 little too much. I wanted to explore why looking back can feel
                 so good even when it kind of messes with your head. Everything
-                from concept to color grade was done by me, solo.
+                from concept to color grade to editing was done by me.
               </p>
             </div>
 
@@ -247,10 +245,10 @@
                   >
                   <p class="pd-text">
                     The tricky part was showing a feeling without just slapping
-                    text on screen. I went with environments that look warm and
-                    familiar at first — but the longer you look, the more
-                    something feels slightly off. Scale, light, depth — all
-                    subtly wrong. Uncomfortable under the surface.
+                    text on screen. I went with environments that look warm to visualize the feeling of lingering in memories.
+                    By showcasing how warmth turns into burning heat I was able to create strong images. I used the narrating voice 
+                    and lyrics of the music to further support what was shown. This way I wanted to ensure that viewers
+                    are able to follow the meaning a little better despite the abstract nature of this movie.
                   </p>
                 </div>
                 <div class="pd-challenge">
@@ -259,9 +257,9 @@
                   >
                   <p class="pd-text">
                     I exported separate render passes (diffuse, shadow, depth,
-                    emission) as EXR files so I could composite
-                    non-destructively in AE. That way I could tweak the
-                    atmosphere, glow and depth of field without touching the 3D
+                    emission) as EXR files so I could color grade
+                    non-destructively in Davinci Resolve. That way I could tweak the
+                    atmosphere and glow without touching the 3D
                     scenes again.
                   </p>
                 </div>
@@ -272,7 +270,7 @@
                     it into a female voice. It wasn't a shortcut — it was a
                     decision. Nostalgia is always someone else's reconstruction
                     of a memory. Having a different voice tell the story felt
-                    right.
+                    right. A female voice
                   </p>
                 </div>
               </div>

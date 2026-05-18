@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
       // Set theme before first paint to prevent flash
-      // Priority: 1. saved choice, 2. system preference, 3. light mode
-      const t = localStorage.getItem('theme')
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -217,7 +215,7 @@
                 harmless kind, but the type that makes you idealize the past a
                 little too much. I wanted to explore why looking back can feel
                 so good even when it kind of messes with your head. Everything
-                from concept to color grade was done by me, solo.
+                from concept to color grade to editing was done by me.
               </p>
             </div>
 
@@ -247,9 +245,9 @@
                   >
                   <p class="pd-text">
                     The tricky part was showing a feeling without just slapping
-                    text on screen. I went with environments that look warm and
-                    familiar at first — but the longer you look, the more
-                    something feels slightly off. Scale, light, depth — all
+                    text on screen. I went with environments that look warm and just as it feels to linger in memories.
+                    By showcasing how warmth turns into burning heat I was able to create strong images. I used the narrating voice 
+                    and lyrics of the music to further support what was shown. This I wanted to ensure that viewer, light, depth — all
                     subtly wrong. Uncomfortable under the surface.
                   </p>
                 </div>

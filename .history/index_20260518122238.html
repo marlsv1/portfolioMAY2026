@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
       // Set theme before first paint to prevent flash
-      // Priority: 1. saved choice, 2. system preference, 3. light mode
-      const t = localStorage.getItem('theme')
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1606,39 +1606,26 @@ html, body {
 [data-theme="dark"] .icon-moon { display: none;  }
 [data-theme="dark"] .icon-sun  { display: block; }
 
-/* ── Folder SVGs: inline paths, styled per theme ── */
-/* Light mode defaults */
-.f-tab  { fill: #1a1a1a; stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-.f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-
-/* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
-
-/* ── Eye paths: same surface color as folders ── */
-.e-border {
-  fill: #ffffff;
-  stroke: #231f20;
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
-}
-.e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+/* ── Folder SVGs: match dark surface in dark mode ── */
+[data-theme="dark"] .folder-img {
+  /* invert black→white, then dim to match --surface (#181818) */
+  filter: invert(1) brightness(0.1);
 }
 
-[data-theme="dark"] .e-border {
-  fill: var(--surface);
-  stroke: var(--black);
-}
-[data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
+/* Eye in dark mode: outline matches surface, pupil slightly lighter */
+[data-theme="dark"] .eye-border {
+  filter: invert(1) brightness(0.1);
 }
 
-/* ── Zap diagrams: invert so black text → white ── */
+[data-theme="dark"] .eye-pupil {
+  filter: invert(1) brightness(0.22);
+}
+
+/* ── Zap images: keep original colors (white bg diagrams) ── */
 [data-theme="dark"] .pd-screenshot.zap-diagram {
-  filter: invert(1) brightness(0.85);
+  filter: none;
+  background: #fff;
+  padding: 16px;
 }
 
 /* Mobile */

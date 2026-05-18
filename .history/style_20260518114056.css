@@ -21,7 +21,6 @@ a:hover {
 :root {
   --black: #1a1a1a;
   --white: #ffffff;
-  --surface: #ffffff;
   --gray-line: #e0e0e0;
   --gray-muted: #999;
   --gray-bg: #f7f7f7;
@@ -34,16 +33,15 @@ a:hover {
 
 /* ── Dark mode ── */
 [data-theme="dark"] {
-  --black: #ebebeb;
+  --black: #f0f0f0;
   --white: #111111;
-  --surface: #181818;
-  --gray-line: #272727;
-  --gray-muted: #555;
-  --gray-bg: #1e1e1e;
+  --gray-line: #2a2a2a;
+  --gray-muted: #666;
+  --gray-bg: #1a1a1a;
 }
 
 [data-theme="dark"] #custom-cursor {
-  background: var(--black);
+  background: #f0f0f0;
 }
 
 [data-theme="dark"] .col-mid::before {
@@ -120,15 +118,15 @@ html, body {
   align-items: stretch;
   justify-content: space-between;
   border-bottom: 1px solid var(--black);
-  background: var(--surface);
+  background: var(--white);
   z-index: 400;
 }
 
 .header-left {
   flex-shrink: 0;
   display: flex;
-  align-items: stretch;
-  padding: 0;
+  align-items: center;
+  padding: 0 20px;
   border-right: 1px solid var(--gray-line);
 }
 
@@ -194,7 +192,7 @@ html, body {
 
 .breadcrumb .tab.active {
   background: var(--black);
-  color: var(--surface);
+  color: var(--white);
   border-right-color: var(--black);
 }
 
@@ -235,7 +233,7 @@ html, body {
 
 .col-left,
 .col-right {
-  background: var(--surface);
+  background: var(--white);
 }
 
 .col-left {
@@ -531,7 +529,7 @@ html, body {
   right: 0;
   bottom: 0;
   width: 100%;
-  background: var(--surface);
+  background: #fafafa;
   border-top: 1px solid var(--black);
   z-index: 300;
   display: flex;
@@ -685,7 +683,7 @@ html, body {
 .about-text p {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--black);
+  color: #444;
   max-width: 550px;
 }
 
@@ -929,7 +927,7 @@ html, body {
 .pd-text {
   font-size: 14px;
   line-height: 1.8;
-  color: var(--black);
+  color: #444;
 }
 
 /* Media blocks: video + screenshot */
@@ -1023,7 +1021,7 @@ html, body {
 .pd-role-list li {
   font-size: 13px;
   line-height: 1.6;
-  color: var(--black);
+  color: #444;
   padding: 10px 0;
   border-bottom: 1px solid var(--gray-line);
   display: flex;
@@ -1562,92 +1560,74 @@ html, body {
    THEME TOGGLE BUTTON
    ============================================ */
 
-/* ── Theme toggle button ── */
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
+  width: 36px;
   height: 100%;
   background: none;
   border: none;
+  border-left: 1px solid var(--gray-line);
   cursor: inherit;
   outline: none;
   padding: 0;
   flex-shrink: 0;
   transition: background 0.15s;
-  /* Ensure clicks always register */
-  pointer-events: all;
-  position: relative;
-  z-index: 1;
 }
 
 .theme-toggle:hover {
   background: var(--gray-bg);
 }
 
-/* SVG icons inside toggle */
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--black);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke 0.3s ease;
+/* The icon — sun in light mode, moon in dark mode */
+.theme-toggle-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  position: relative;
+  transition: all 0.25s ease;
   flex-shrink: 0;
-  pointer-events: none; /* clicks pass through to button */
 }
 
-.icon-moon { display: block; }
-.icon-sun  { display: none;  }
-
-[data-theme="dark"] .icon-moon { display: none;  }
-[data-theme="dark"] .icon-sun  { display: block; }
-
-/* ── Folder SVGs: inline paths, styled per theme ── */
-/* Light mode defaults */
-.f-tab  { fill: #1a1a1a; stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-.f-body { fill: #ffffff;  stroke: #1a1a1a; stroke-miterlimit: 10; stroke-width: 1.5px; }
-
-/* Dark mode: both parts become surface color */
-[data-theme="dark"] .f-tab  { fill: var(--black); stroke: var(--black); }
-[data-theme="dark"] .f-body { fill: var(--surface); stroke: var(--black); stroke-width: 1.5px; }
-
-/* ── Eye paths: same surface color as folders ── */
-.e-border {
-  fill: #ffffff;
-  stroke: #231f20;
-  stroke-miterlimit: 10;
-  stroke-width: 2px;
-}
-.e-pupil {
-  fill: #1a1a1a;
-  stroke: none;
+/* Sun rays in light mode */
+.theme-toggle-icon::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  opacity: 1;
+  transition: opacity 0.25s ease, inset 0.25s ease;
 }
 
-[data-theme="dark"] .e-border {
-  fill: var(--surface);
-  stroke: var(--black);
-}
-[data-theme="dark"] .e-pupil {
-  fill: var(--black);
-  stroke: none;
-}
-
-/* ── Zap diagrams: invert so black text → white ── */
-[data-theme="dark"] .pd-screenshot.zap-diagram {
-  filter: invert(1) brightness(0.85);
+/* Dark mode: filled circle (moon), no outer ring */
+[data-theme="dark"] .theme-toggle-icon {
+  background: var(--black);
+  border-color: var(--black);
+  /* clip to crescent */
+  box-shadow: -3px 0 0 0 var(--white);
 }
 
-/* Mobile */
+[data-theme="dark"] .theme-toggle-icon::before {
+  opacity: 0;
+}
+
+/* Mobile: keep toggle visible */
 @media (max-width: 768px) {
   .theme-toggle {
     width: 44px;
   }
 
-  /* Hide clock, keep toggle */
+  .header-right {
+    display: flex !important; /* override mobile hide */
+    align-items: stretch;
+    padding: 0;
+  }
+
+  /* Hide clock on mobile but keep toggle */
   .clock {
     display: none;
   }
